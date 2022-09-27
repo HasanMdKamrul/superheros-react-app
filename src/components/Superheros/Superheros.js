@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Hero from '../Hero/Hero';
+import { getLsData, setDataToLs } from '../utilities/manageDb';
 
 const Superheros = () => {
 
     const [heros,setHeros] = useState([]);
     const [cart,setCart] = useState([]);
+
 
     useEffect(()=>{
 
@@ -26,39 +28,60 @@ const Superheros = () => {
 
     },[]);
 
+    
 
 
     // ** Handle add to cart
 
     const handleAddToCart = (selectedProduct)=>{
 
-        const {name,picture,price,superPower,_id,quantity} = selectedProduct;
+        //** */ {cart:{id:quantity,id:quantity}}
+
+       let newCart = [];
+
+       const existedProduct = cart.find(item => item._id === selectedProduct._id);
+
+       if (!existedProduct) {
+
+            newCart = [...cart,selectedProduct];
+            setCart(newCart);
+            // ** set to ls
+            setDataToLs(selectedProduct._id);
+       } else{
+            const rest = cart.filter(item => item._id !== existedProduct._id);
+            existedProduct["quantity"] = existedProduct["quantity"] + 1;
+            newCart = [...rest,existedProduct];
+            setCart(newCart);
+            setDataToLs(existedProduct._id);
+       };
+    };
+
+    // ** localStorage theke data ene ui te dekhabo
+
+    useEffect(()=>{
+        // ** get the storedData
+        const storedData = getLsData();
+
+        const displayFromLsArray = [];
         
-        const info = {
-            _id,
-            name,
-            superPower,
-            price,
-            picture,
-            quantity
+        for (const key in storedData) {
+            
+            const findProduct = heros.find(item => item._id === key);
+
+            if (findProduct) {
+                findProduct.quantity = storedData[key];
+                displayFromLsArray.push(findProduct);
+            }
+
         };
 
-        let newArray = [];
+        setCart(displayFromLsArray);
 
-        const existed = cart.find(item => item._id === selectedProduct._id);
+    },[heros]);
 
-        if (!existed) {
-            newArray = [...cart,info];
-            setCart(newArray);
-            localStorage.setItem('cart',JSON.stringify([...cart,info]));
-        } else{
-            const rest = cart.filter(item=> item._id !== _id);
-            existed.quantity = existed.quantity + 1;
-            newArray = [...rest,existed];
-            localStorage.setItem('cart',JSON.stringify([...rest,existed]))
-        }
 
-    }
+
+
 
 
     return (
@@ -71,7 +94,7 @@ const Superheros = () => {
               </div>
             </div>
             <div className='col-span-2'>
-                <Cart cart={cart}></Cart>
+                <Cart  cart={cart}></Cart>
             </div>
         </div>
     );
