@@ -1,0 +1,51 @@
+[
+  {
+    "_id": "633343f50505ffff5b6754cf",
+    "picture": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/a/a0/Iron_Man_Armor_-_Mark_L.png/revision/latest?cb=20180318221316",
+    "price": 37,
+    "superPower": "Electrons",
+    "name": "Iron Man"
+  },
+  {
+    "_id": "633343f580c4b73d659ed30a",
+    "picture": "https://m.media-amazon.com/images/I/81slGaisBhL._SL1500_.jpg",
+    "price": 29,
+    "superPower": "Sheild",
+    "name": "Captain America"
+  },
+  {
+    "_id": "633343f5ba5d6a07f1c8667d",
+    "picture": "https://m.media-amazon.com/images/I/91+-RqNokWL._SL1500_.jpg",
+    "price": 26,
+    "superPower": "Mionior",
+    "name": "Thor"
+  },
+  {
+    "_id": "633343f5b8df3d1499a98e13",
+    "picture": "https://static.wikia.nocookie.net/marveldatabase/images/d/d3/Avengers_Infinity_War_poster_014_Textless.jpg/revision/latest?cb=20180418025421",
+    "price": 27,
+    "superPower": "Magician",
+    "name": "Dr Strange"
+  },
+  {
+    "_id": "633343f5b2d16e6b696aaf26",
+    "picture": "https://i.pinimg.com/736x/9f/1b/37/9f1b3782f945424d48e3f0cf8d0edd0b.jpg",
+    "price": 27,
+    "superPower": "Witch",
+    "name": "Wanda"
+  },
+  {
+    "_id": "633343f52d815e93c3604059",
+    "picture": "https://lumiere-a.akamaihd.net/v1/images/p_blackpanther_19754_4ac13f07.jpeg?region=0%2C0%2C540%2C810",
+    "price": 27,
+    "superPower": "Vibranium",
+    "name": "Black Panther"
+  },
+  {
+    "_id": "633343f59b7853c26691a218",
+    "picture": "https://images-na.ssl-images-amazon.com/images/I/914MHuDfMSL.jpg",
+    "price": 24,
+    "superPower": "brown",
+    "name": "Black Widow"
+  }
+]
