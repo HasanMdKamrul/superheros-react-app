@@ -1,4 +1,7 @@
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+
 
 const Hero = ({hero:{name,picture,price,superPower}}) => {
     return (
@@ -14,7 +17,10 @@ const Hero = ({hero:{name,picture,price,superPower}}) => {
                     <div className="card-actions justify-end">
                         <div className="badge badge-outline">${price}</div> 
                         <div className="badge badge-outline">${superPower}</div>
-                        <button className="btn btn-wide">Add To Cart</button>
+                        <button className="btn btn-wide">
+                            Add To Cart
+                            <span className='ml-2'><FontAwesomeIcon icon={faShoppingCart} /></span>
+                        </button>
                     </div>
                 </div>
             </div>
