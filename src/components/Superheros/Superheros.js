@@ -26,11 +26,13 @@ const Superheros = () => {
 
 
     return (
-        <div className='grid lg:grid-cols-12'>
+        <div className='grid lg:grid-cols-12 container mx-auto'>
             <div className='col-span-10'>
-               {
-                heros?.map(hero => <Hero  />)
-               }
+              <div className='grid grid-cols-3 gap-x-5 gap-y-5 mt-10'>
+                {
+                    heros?.map(hero => <Hero key={hero._id} hero={hero} />)
+                }
+              </div>
             </div>
             <div className='col-span-2'>
                 <h1>Cart content</h1>
