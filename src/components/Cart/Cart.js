@@ -7,7 +7,7 @@ const Cart = ({cart}) => {
     const totalPrice = cart.reduce((previousValue,currentValue) => previousValue + (currentValue.price * currentValue.quantity) ,0);
     const tax = +((totalPrice * 0.1).toFixed(2));
     const grandTotal = +((totalPrice + tax).toFixed(2))
-
+   
    
     return (
         <div style={{position:"sticky",top:"5"}} className="my-5 ">

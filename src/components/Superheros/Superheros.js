@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Hero from '../Hero/Hero';
-import { getLsData, setDataToLs } from '../utilities/manageDb';
+import { getLsData } from '../utilities/manageDb';
 
 const Superheros = () => {
 
@@ -34,26 +34,42 @@ const Superheros = () => {
     // ** Handle add to cart
 
     const handleAddToCart = (selectedProduct)=>{
+        
+        const {_id,quantity} = selectedProduct;
 
-        //** */ {cart:{id:quantity,id:quantity}}
+        const info = {
+            _id,
+            quantity
+        }
+      
+        // ** get cart value from ls
 
-       let newCart = [];
+        const storedCart = JSON.parse(localStorage.getItem('cart'));
 
-       const existedProduct = cart.find(item => item._id === selectedProduct._id);
+       
+       
+        
+       
+        if (storedCart) {
+            const isExistedinLs = storedCart.find(item => item._id === _id);
+            if (isExistedinLs) {
+                isExistedinLs.quantity = isExistedinLs.quantity + 1;
+                localStorage.setItem('cart', JSON.stringify(storedCart));
+                
+            }else{
+                localStorage.setItem('cart', JSON.stringify([...storedCart,info]));
+                
+            };
+            
+                
+        } else{
+            // ** set the ls
+            localStorage.setItem('cart', JSON.stringify([info]));
+            console.log("first bk added")
+        };
 
-       if (!existedProduct) {
+        
 
-            newCart = [...cart,selectedProduct];
-            setCart(newCart);
-            // ** set to ls
-            setDataToLs(selectedProduct._id);
-       } else{
-            const rest = cart.filter(item => item._id !== existedProduct._id);
-            existedProduct["quantity"] = existedProduct["quantity"] + 1;
-            newCart = [...rest,existedProduct];
-            setCart(newCart);
-            setDataToLs(existedProduct._id);
-       };
     };
 
     // ** localStorage theke data ene ui te dekhabo
